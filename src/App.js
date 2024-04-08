@@ -1,11 +1,9 @@
 import { useState } from "react";
 import "./App.css";
-import About from "./Components/About";
+// import About from "./Components/About";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
 import Alert from "./Components/Alert";
-import Test from "./Components/Test";
-import { createBrowserRouter, RouterProvider, Router } from "react-router-dom";
 
 function App() {
   const [mode, setmode] = useState("light");
@@ -19,16 +17,6 @@ function App() {
       setAlert(null);
     }, 2500);
   };
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <TextForm />,
-    },
-    {
-      path: "/test",
-      element: <Test />,
-    },
-  ]);
   const toggleMode = () => {
     if (mode === "light") {
       setmode("dark");
@@ -42,10 +30,9 @@ function App() {
   };
   return (
     <>
-      <Router>
-        <Navbar about="About" />
-      </Router>
-      <RouterProvider router={router} />
+    <Navbar mode={mode} toggleMode={toggleMode} title="text-utils"/>
+    <Alert alert={alert}/>
+    <TextForm alert={showAlert} heading="Enter your Text Here" mode={mode}/>
     </>
   );
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 
 
 export default function Navbar(props) {
@@ -27,14 +26,11 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-            <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+            <a className="nav-link active" aria-current="page" href="/">Home</a>
             </li>
-            <li className="nav-item">
-            <Link className="nav-link " aria-current="page" to="/about">{props.about}</Link>
-            </li>
-            <li className="nav-item">
-            <Link className="nav-link " aria-current="page" to="/test">Test</Link>
-            </li>
+            {/* <li className="nav-item">
+            <a className="nav-link " aria-current="page" href="/about">{props.about}</a>
+            </li> */}
           </ul>
           <div
             className={`form-check form-switch text-${
@@ -44,7 +40,7 @@ export default function Navbar(props) {
             <input
               className="form-check-input"
               type="checkbox"
-              onClick={props.togglemode}
+              onClick={props.toggleMode}
               id="flexSwitchCheckDefault"
             />
             <label
@@ -54,7 +50,7 @@ export default function Navbar(props) {
               {props.mode === "dark" ? "Enable Lightmode" : "Enable Darkmode"}
             </label>
           </div>
-          <form className="d-flex mx-3" role="search">
+          {/* <form className="d-flex mx-3" role="search">
             <input
               className="form-control me-2"
               type="search"
@@ -64,7 +60,7 @@ export default function Navbar(props) {
             <button className="btn btn-outline-success" type="submit">
               Search
             </button>
-          </form>
+          </form> */}
         </div>
       </div>
     </nav>
