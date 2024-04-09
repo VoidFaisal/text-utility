@@ -1,9 +1,10 @@
 import { useState } from "react";
 import "./App.css";
-// import About from "./Components/About";
+import About from "./Components/About";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
 import Alert from "./Components/Alert";
+import { createBrowserRouter,RouterProvider } from "react-router-dom";
 
 function App() {
   const [mode, setmode] = useState("light");
@@ -28,13 +29,27 @@ function App() {
       showAlert("Light mode Has Been Enabled", "success");
     }
   };
-  return (
+  const router = createBrowserRouter(
+  [
+    {
+      path:"/",
+      element:<><Navbar mode={mode} toggleMode={toggleMode} title="text-utils"/> 
+      <Alert alert={alert}/><TextForm alert={showAlert} heading="Enter your Text Here" mode={mode}/></>,
+      
+    },
+    {
+      path:"/about",
+      element:<><Navbar mode={mode} toggleMode={toggleMode} title="text-utils"/> 
+      <Alert alert={alert}/><About/></>,
+    },
+  ])
+  return(
     <>
-    <Navbar mode={mode} toggleMode={toggleMode} title="text-utils"/>
-    <Alert alert={alert}/>
-    <TextForm alert={showAlert} heading="Enter your Text Here" mode={mode}/>
-    </>
-  );
+  
+<RouterProvider router={router}/>
+  </>
+);
+  
 }
 
 export default App;
